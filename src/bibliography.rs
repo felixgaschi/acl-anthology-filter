@@ -7,7 +7,7 @@ use std::{
 use crate::walkdirectory::filter_walk_by_extension;
 
 pub fn get_anthology_file(
-    directory: &str,
+    directory: &PathBuf,
     anthology_path: Option<PathBuf>,
 ) -> Result<PathBuf, Error> {
     if let Some(real_anthology_path) = anthology_path {
@@ -23,8 +23,8 @@ pub fn get_anthology_file(
         Error::new(
             ErrorKind::NotFound, 
             format!(
-                "anthology.bib does not exist in {}. If it has another address, you need to specify it in the get_bilbiography function",
-                directory
+                "anthology.bib does not exist in {:?}. If it has another address, you need to specify it in the get_bilbiography function",
+                directory.as_os_str()
             )
         )
     )

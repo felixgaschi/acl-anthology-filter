@@ -2,11 +2,7 @@ use regex::Regex;
 
 lazy_static! {
     pub static ref CITATION_REGEX_SET: Vec<Regex> = {
-        let citation_commands = [
-            String::from(r"cite"),
-            String::from(r"citep"),
-            String::from(r"citet"),
-        ];
+        let citation_commands = [String::from(r"cite[a-zA-Z]*")];
         let mut regex_set: Vec<Regex> = Vec::new();
         for command in citation_commands {
             let full_command = String::from(r"\\") + &command + &String::from(r"\{([^\}]+)\}");

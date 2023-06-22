@@ -14,7 +14,7 @@ fn convert_to_pathbuf(dir_entry: DirEntry) -> PathBuf {
 /// and returns an iterator over files
 /// with given extension
 pub fn filter_walk_by_extension<'a>(
-    directory: &str,
+    directory: &PathBuf,
     extension: &'a str,
 ) -> Box<dyn 'a + Iterator<Item = PathBuf>> {
     Box::new(
